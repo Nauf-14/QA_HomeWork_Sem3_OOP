@@ -7,8 +7,10 @@ public class Controller {
         this.streamService = new StreamService();
     }
 
-    public void sortStreams(List<Stream> streams) {
-        streamService.sortStreams(streams);
+    // Изменяем тип параметра на List<? extends Iterable<StudentGroup>>
+    public void sortStreams(List<? extends Iterable<StudentGroup>> iterableStreams) {
+        streamService.sortStreams(iterableStreams);
     }
 }
+
 
