@@ -16,22 +16,30 @@ public class Main {
         streams.add(stream1);
         streams.add(stream2);
 
-        System.out.println("До сортировки:");
-        printStreams(streams);
+        List<IterableStream> iterableStreams = new ArrayList<>();
+        for (Stream stream : streams) {
+            iterableStreams.add(new IterableStream(stream));
+        }
 
-        controller.sortStreams(streams);
+        System.out.println("До сортировки:");
+        printStreams(iterableStreams);
+
+        controller.sortStreams(iterableStreams);
 
         System.out.println("\nПосле сортировки:");
-        printStreams(streams);
+        printStreams(iterableStreams);
     }
 
-    private static void printStreams(List<Stream> streams) {
-        for (Stream stream : streams) {
-            System.out.println("Поток:");
-            for (StudentGroup group : stream) {
+    private static void printStreams(List<IterableStream> iterableStreams) {
+        int count = 1;
+        for (IterableStream iterableStream : iterableStreams) {
+            System.out.println("Поток " + count);
+            count++;
+            for (StudentGroup group : iterableStream) {
                 System.out.println(" - " + group.getName());
             }
         }
     }
 }
+
 
